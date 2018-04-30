@@ -1,0 +1,7 @@
+#JSGF V1.0;
+
+grammar common;
+
+public <could> = (Could | May) I have;
+public <polite> = Please | Kindly;
+

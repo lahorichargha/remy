@@ -1,0 +1,6 @@
+#JSGF V1.0;
+
+grammar ingredient;
+
+public <ingredient> = chocolate | sugar | broccoli | carrot | flour | pepper | onion | eggplant | tomato | paste | garlic | parsley 
+  {ingredient};

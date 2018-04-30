@@ -1,0 +1,9 @@
+#JSGF V1.0;
+
+grammar hello;
+
+public <hello> = <greet> | <quit>;
+
+public <greet> = (Good morning | Hello) ( Joe | Paul | Rita | Will | Peter | Brian | Greg );
+
+public <quit> = (Quit | Exit);

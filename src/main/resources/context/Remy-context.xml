@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd"
+	default-autowire="byType">
+  	<context:annotation-config/>
+	
+	<bean id="remy" class="com.tastycode.remy.Remy"/>
+
+	<bean id="speaker" class="com.tastycode.remy.dialogmanager.Speaker"/>
+	<bean id="output" class="com.tastycode.remy.output.SpeechOutput"/>
+	<bean id="input"  class="com.tastycode.remy.input.SpeechInput"/>
+	<bean id="dialog" class="com.tastycode.remy.dialogmanager.RemyDialog">
+	  <constructor-arg  ref="model"/>
+	</bean>
+	
+	<bean id="gui" class="com.tastycode.remy.gui.RemyInputFrame">
+	  <constructor-arg ref="dialog"/>
+	</bean>
+	
+	<bean id="model" class="com.tastycode.remy.commonobjects.domainmodel.RecipeDomainModel">
+	  <constructor-arg><bean class="com.tastycode.remy.reciperepository.HardcodedRecipeRepository" factory-method="getChocolateCookie"></bean></constructor-arg>
+	</bean>
+	
+	<!-- Features -->
+	<bean id="timer" class="com.tastycode.remy.taskmanager.timer.TimerFeature">
+	  <constructor-arg ref="model"/>
+	  <property name="reasoning" ref="timer.reasoning"/>
+	</bean>
+	<bean id="timer.reasoning" class="com.tastycode.remy.taskmanager.timer.TimerReasoning"/>
+	
+	<bean id="step" class="com.tastycode.remy.taskmanager.step.StepFeature">
+	  <constructor-arg ref="model"/>
+	</bean>
+
+    <bean id="query" class="com.tastycode.remy.taskmanager.query.QueryFeature">
+      <constructor-arg ref="model"/>
+    </bean>
+</beans>

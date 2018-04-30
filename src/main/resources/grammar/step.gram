@@ -1,0 +1,11 @@
+#JSGF V1.0;
+
+grammar step;
+
+public <step> = <next> | <previous> | <current> | <goto> | <first>;
+
+<next> = (What next | whats next | next | next step) {cmd(next step)};
+<previous> = (Previous step | What was that | Go back) {cmd(previous step)};
+<first> = (Start over|first step) {cmd(first step)};
+<current> = (Current step | repeat) {cmd(current step)};
+<goto> = (Goto step) {cmd(goto step)}; 

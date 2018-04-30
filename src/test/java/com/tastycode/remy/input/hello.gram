@@ -1,0 +1,14 @@
+#JSGF V1.0;
+
+/**
+ * TODO: This file should be in  
+ * JSGF Grammar for Hello World example
+ */
+
+grammar hello;
+
+public <greet> = (Good morning | Hello) ( Joe | Paul | Rita | Will | Peter | Brian | Greg );
+
+public <remy> = ((What next) | (what's next) | (what now));
+
+public <quit> = (Quit | Exit);

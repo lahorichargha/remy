@@ -1,0 +1,5 @@
+#JSGF V1.0;
+
+grammar cooking;
+
+public <cooking-verb> = (grease | sprinkle | drop | add | pour | cut | slice | cook | bake | fry | mix) {cooking-verb};

@@ -1,0 +1,29 @@
+But it has to be here due to a bug in Sphinx's resource loading code.
+For some reason, the JSGFParser attempts to open a resource from the 
+test-classes output directory.
+
+TODO: Fix this somehow.  Possible solutions: 
+  1) AOP byte-instrument JSGFParser to open in correct manner
+  2) Extend/reimplement JSGFParser
+  3) Figure out why classpath make loading not work, and fix
+
+Exception in thread "main" java.io.FileNotFoundException: [*munched*]\workspace\remy\target\test-classes\com\tastycode\remy\input\hello.gram (The system cannot find the file specified)
+	at java.io.FileInputStream.open(Native Method)
+	at java.io.FileInputStream.<init>(FileInputStream.java:106)
+	at java.io.FileInputStream.<init>(FileInputStream.java:66)
+	at sun.net.www.protocol.file.FileURLConnection.connect(FileURLConnection.java:70)
+	at sun.net.www.protocol.file.FileURLConnection.getInputStream(FileURLConnection.java:161)
+	at java.net.URL.openStream(URL.java:1007)
+	at com.sun.speech.engine.recognition.JSGFParser.newGrammarFromJSGF(JSGFParser.java:261)
+	at com.sun.speech.engine.recognition.BaseRecognizer.loadJSGF(BaseRecognizer.java:273)
+	at com.sun.speech.engine.recognition.BaseRecognizer.loadJSGF(BaseRecognizer.java:230)
+	at edu.cmu.sphinx.jsapi.JSGFGrammar.commitChanges(JSGFGrammar.java:615)
+	at edu.cmu.sphinx.jsapi.JSGFGrammar.createGrammar(JSGFGrammar.java:318)
+	at edu.cmu.sphinx.linguist.language.grammar.Grammar.allocate(Grammar.java:163)
+	at edu.cmu.sphinx.linguist.flat.FlatLinguist.allocate(FlatLinguist.java:319)
+	at edu.cmu.sphinx.decoder.search.SimpleBreadthFirstSearchManager.allocate(SimpleBreadthFirstSearchManager.java:602)
+	at edu.cmu.sphinx.decoder.Decoder.allocate(Decoder.java:109)
+	at edu.cmu.sphinx.recognizer.Recognizer.allocate(Recognizer.java:182)
+	at com.tastycode.remy.input.InputSphinx.startRecognizing(InputSphinx.java:58)
+	at com.tastycode.remy.input.InputSphinx.afterPropertiesSet(InputSphinx.java:52)
+	at com.tastycode.remy.input.InputSphinxExample.main(InputSphinxExample.java:9)

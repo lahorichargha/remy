@@ -1,0 +1,10 @@
+#JSGF V1.0;
+
+grammar remy;
+
+import <timer.*>;
+import <step.*>;
+import <query.*>;
+
+public <command> = [<name>] [<timer.timer> | <step.step> | <query.query>] [<name>];
+<name> = Remy;
